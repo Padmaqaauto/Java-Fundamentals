@@ -26,8 +26,8 @@ The table below provides a **date-wise record of my course work**.
 
 | Date        | Day       | Activity           |  Repository |
 | ----------- | --------- | ------------------ |  ---------- |
-| 08-Oct-2026 | Wednesday | 📝 Exercise        |  [Open](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise)  |
-| 07-Oct-2026 | Tuesday   | 🧪 Practice / Demo |  [Open](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice)  |
+| 07-Oct-2026 | Wednesday | 📝 Exercise        |  [Open](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise)  |
+| 06-Oct-2026 | Tuesday   | 🧪 Practice / Demo |  [Open](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice)  |
 
 ---
 
