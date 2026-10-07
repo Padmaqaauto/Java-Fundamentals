@@ -10,5 +10,6 @@ public class GreetUser {
         String lastName = sc.nextLine();
         String fullName = firstName.concat(" ").concat(lastName);
         IO.println("Hello,"+fullName+ "! Welcome abroad.");
+        sc.close();
     }
 }

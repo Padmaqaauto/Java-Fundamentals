@@ -12,5 +12,6 @@ public class TimeConverter {
         int second = seconds % 60;
 
         IO.println(hour + " : " + minute + " : " + second);
+        sc.close();
     }
 }
