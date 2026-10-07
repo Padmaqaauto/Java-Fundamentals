@@ -12,7 +12,8 @@ public class Average {
         IO.println("Enter the third number: ");
         num3=scanner.nextInt();
 
-        float Average = (num1 + num2 + num3) / 3;
+        float Average;
+        Average = (float) (num1 + num2 + num3) / 3.0f;
         IO.println("Average: " + Average);
    }
 }

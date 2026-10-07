@@ -23,16 +23,16 @@ public class ShoppingReceipt {
         IO.println("==============================");
         IO.println("\t\tReceipt");
         IO.println("==============================");
-        IO.println("Apple   \t " + quantity1 + " x " + String.format("%.2f", price1) + " = "
+        IO.println(item1  +"  \t " + quantity1 + " x " + String.format("%.2f", price1) + " = "
                 + String.format("%.2f", itemPrice1) + "SEK");
 
-        IO.println("Milk    \t " + quantity2 + " x " + String.format("%.2f", price2) + " = "
+        IO.println(item2 +"  \t " +  quantity2 + " x " + String.format("%.2f", price2) + " = "
                 + String.format("%.2f", itemPrice2) + "SEK");
 
-        IO.println("Bread   \t " + quantity3 + " x " + String.format("%.2f", price3) + " = "
+        IO.println(item3 +"  \t " +  quantity3 + " x " + String.format("%.2f", price3) + " = "
                 + String.format("%.2f", itemPrice3) + "SEK");
         IO.println("------------------------------");
-        IO.println("Grand Total: \t\t\t " + String.format("%.2f", totalPrice));
+        IO.println("Grand Total: \t\t " + String.format("%.2f", totalPrice));
         IO.println("==============================");
     }
 }
