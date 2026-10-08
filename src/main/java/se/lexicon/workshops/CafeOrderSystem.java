@@ -146,30 +146,31 @@ class CustomerOrder {
 
 public class CafeOrderSystem {
     void main() {
+        Scanner sc = new Scanner(System.in);
         CustomerOrder customer1 = new CustomerOrder();
-        CustomerOrder customer2 = new CustomerOrder();
-        CustomerOrder customer3 = new CustomerOrder();
-
-        customer1.getCustomerDetails();
-        customer1.greet();
-        customer1.displayMenu();
-        customer1.getOrder();
-        customer1.displayCustomerOrder();
-        customer1.displayMessage();
-
-        customer2.getCustomerDetails();
-        customer2.greet();
-        customer2.displayMenu();
-        customer2.getOrder();
-        customer2.displayCustomerOrder();
-        customer2.displayMessage();
-
-        customer3.getCustomerDetails();
-        customer3.greet();
-        customer3.displayMenu();
-        customer3.getOrder();
-        customer3.displayCustomerOrder();
-        customer3.displayMessage();
-
+        int count = 0;
+        boolean flag = true;
+        double totalRevenue = 0;
+        while (flag) {
+            customer1.getCustomerDetails();
+            customer1.greet();
+            customer1.displayMenu();
+            customer1.getOrder();
+            customer1.displayCustomerOrder();
+            customer1.displayMessage();
+            IO.println("Next Customer name (or 'done' to close) ");
+            String text = sc.nextLine();
+            if (text.equals("done")) {
+                flag = false;
+            }
+            totalRevenue += customer1.calculateTotalBill();
+            count++;
+        }
+        IO.println("==============================");
+        IO.println("\t\t END OF DAY REPORT");
+        IO.println("==============================");
+        IO.println("Customer Served:  "+count);
+        IO.println("Total Revenue:  "+totalRevenue);
+        IO.println("==============================");
     }
 }
