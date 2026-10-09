@@ -169,7 +169,7 @@ class CustomerOrder {
         return totalAmount;
     }
 
-    void displayCustomerOrder() {
+    void printReceipt() {
         IO.println("==============================");
         IO.println("\t\tLexicon Cafe");
         IO.println("==============================");
@@ -195,17 +195,17 @@ class CustomerOrder {
 public class CafeOrderSystem {
     void main() {
         Scanner sc = new Scanner(System.in);
-        CustomerOrder customer1 = new CustomerOrder(sc);
+        CustomerOrder order = new CustomerOrder(sc);
         int count = 0;
         boolean flag = true;
         double totalRevenue = 0;
         while (flag) {
-            customer1.getCustomerDetails();
-            customer1.greet();
-            customer1.displayMenu();
-            customer1.getOrder();
-            customer1.displayCustomerOrder();
-            customer1.displayMessage();
+            order.getCustomerDetails();
+            order.greet();
+            order.displayMenu();
+            order.getOrder();
+            order.printReceipt();
+            order.displayMessage();
             while (true){
                 IO.println("\nNext customer? Enter 'yes' to continue or 'done' to close.");
                 String text = sc.nextLine().trim().toLowerCase();
@@ -219,7 +219,7 @@ public class CafeOrderSystem {
                 }
 
             }
-            totalRevenue += customer1.calculateTotalBill();
+            totalRevenue += order.calculateTotalBill();
             count++;
         }
         IO.println("\n==============================");
