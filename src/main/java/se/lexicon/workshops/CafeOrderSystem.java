@@ -29,11 +29,22 @@ class CustomerOrder {
     double vatTax;
     double totalAmount;
 
-    Scanner input = new Scanner(System.in);
+    Scanner input;
+
+    CustomerOrder(Scanner input) {
+        this.input = input;
+    }
 
     void getCustomerDetails() {
-        IO.println("\nWelcome! What is your name?");
-        name = input.nextLine();
+        while (true) {
+            IO.println("\nWelcome! What is your name?");
+            name = input.nextLine().trim();
+
+            if (!name.isEmpty()) {
+                break;
+            }
+            IO.println("Name cannot be empty! Please try again!");
+        }
     }
 
     void greet() {
@@ -53,10 +64,24 @@ class CustomerOrder {
     }
 
     void getOrder() {
-        IO.println("Enter item number (1-5): ");
-        int item = input.nextInt();
 
-        // Find item and price
+        int item;
+        while (true) {
+            IO.println("Enter item number (1-5): ");
+            if(input.hasNextInt()) {
+                item = input.nextInt();
+                input.nextLine();
+                if (item >= 1 && item <= 5) {
+                    break;
+                } else {
+                    IO.println("Error: Enter an item number between 1 and 5.");
+                }
+            } else {
+                IO.println("Error: Please enter a numeric value between 1 and 5.");
+                input.nextLine();
+            }
+        }
+
         switch (item) {
             case 1:
                 selectedItem = item1;
@@ -87,10 +112,33 @@ class CustomerOrder {
                 IO.println("Invalid item number.");
                 return;
         }
-        IO.println("How many? ");
-        quantity = input.nextInt();
-        IO.println("Loyalty Member? (yes/no)");
-        loyaltyChoice = input.next();
+
+        while (true) {
+            IO.println("How many? ");
+            if(input.hasNextInt()) {
+                quantity = input.nextInt();
+                input.nextLine();
+                if(quantity > 0){
+                    break;
+                } else {
+                    IO.println("Error: Quantity must be greater than 0.");
+                }
+            } else {
+                IO.println("Error: Please enter a numeric value greater than 0.");
+                input.nextLine();
+            }
+        }
+
+        while (true) {
+            IO.println("Loyalty Member? (yes/no)");
+            loyaltyChoice = input.nextLine().trim().toLowerCase();
+
+                if(loyaltyChoice.equals("yes") || loyaltyChoice.equals("no")) {
+                    break;
+                } else {
+                    IO.println("Error: Please enter only yes or no.");
+                }
+        }
         IO.println("");
     }
 
@@ -147,7 +195,7 @@ class CustomerOrder {
 public class CafeOrderSystem {
     void main() {
         Scanner sc = new Scanner(System.in);
-        CustomerOrder customer1 = new CustomerOrder();
+        CustomerOrder customer1 = new CustomerOrder(sc);
         int count = 0;
         boolean flag = true;
         double totalRevenue = 0;
@@ -158,19 +206,27 @@ public class CafeOrderSystem {
             customer1.getOrder();
             customer1.displayCustomerOrder();
             customer1.displayMessage();
-            IO.println("Next Customer name (or 'done' to close) ");
-            String text = sc.nextLine();
-            if (text.equals("done")) {
-                flag = false;
+            while (true){
+                IO.println("\nNext customer? Enter 'yes' to continue or 'done' to close.");
+                String text = sc.nextLine().trim().toLowerCase();
+                if (text.equalsIgnoreCase("yes")) {
+                    break;
+                } else if (text.equalsIgnoreCase("done")) {
+                    flag = false;
+                    break;
+                } else {
+                    IO.println("Error: Please enter yes or done.");
+                }
+
             }
             totalRevenue += customer1.calculateTotalBill();
             count++;
         }
-        IO.println("==============================");
+        IO.println("\n==============================");
         IO.println("\t\t END OF DAY REPORT");
         IO.println("==============================");
-        IO.println("Customer Served:  "+count);
-        IO.println("Total Revenue:  "+totalRevenue);
+        IO.println("Customer Served: "+ count);
+        IO.println("Total Revenue  : "+ String.format("%.2f", totalRevenue) + " SEK");
         IO.println("==============================");
     }
 }
