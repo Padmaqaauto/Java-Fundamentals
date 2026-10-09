@@ -2,210 +2,86 @@ package se.lexicon.workshops;
 
 import java.util.Scanner;
 
-class CustomerOrder {
-    String name;
+public class CafeOrderSystem {
+    void main() {
+        Scanner sc = new Scanner(System.in);
 
-    String item1 = "Espresso";
-    double price1 = 25.00;
 
-    String item2 = "Cappuccino";
-    double price2 = 35.00;
+        int count = 0;
+        boolean flag = true;
+        double totalRevenue = 0;
 
-    String item3 = "Latte";
-    double price3 = 40.00;
+        while (flag) {
 
-    String item4 = "Croissant";
-    double price4 = 30.00;
+            Order order = new Order();
 
-    String item5 = "SandWich";
-    double price5 = 55.00;
+            while (true) {
+                IO.println("\nWelcome! What is your name?");
+                order.name = sc.nextLine().trim();
 
-    String selectedItem;
-    double selectedPrice;
-    int quantity;
-    String loyaltyChoice;
-    double subTotal;
-    double discount ;
-    double vatTax;
-    double totalAmount;
-
-    Scanner input;
-
-    CustomerOrder(Scanner input) {
-        this.input = input;
-    }
-
-    void getCustomerDetails() {
-        while (true) {
-            IO.println("\nWelcome! What is your name?");
-            name = input.nextLine().trim();
-
-            if (!name.isEmpty()) {
-                break;
-            }
-            IO.println("Name cannot be empty! Please try again!");
-        }
-    }
-
-    void greet() {
-        IO.println("Hi " + name + "! Here is our Menu:\n");
-    }
-
-    void displayMenu() {
-        IO.println("==============================");
-        IO.println("\t\tLexicon Cafe");
-        IO.println("==============================");
-        IO.println("1. " + item1 + "\t\t\t " + String.format("%.2f", price1) + " SEK ");
-        IO.println("2. " + item2 + "\t\t " + String.format("%.2f", price2) + " SEK ");
-        IO.println("3. " + item3 + "\t\t\t " + String.format("%.2f", price3) + " SEK ");
-        IO.println("4. " + item4 + "\t\t " + String.format("%.2f", price4) + " SEK ");
-        IO.println("5. " + item5 + "\t\t\t " + String.format("%.2f", price5) + " SEK ");
-        IO.println("==============================\n");
-    }
-
-    void getOrder() {
-
-        int item;
-        while (true) {
-            IO.println("Enter item number (1-5): ");
-            if(input.hasNextInt()) {
-                item = input.nextInt();
-                input.nextLine();
-                if (item >= 1 && item <= 5) {
+                if (!order.name.isEmpty()) {
                     break;
-                } else {
-                    IO.println("Error: Enter an item number between 1 and 5.");
                 }
-            } else {
-                IO.println("Error: Please enter a numeric value between 1 and 5.");
-                input.nextLine();
+                IO.println("Name cannot be empty! Please try again!");
             }
-        }
 
-        switch (item) {
-            case 1:
-                selectedItem = item1;
-                selectedPrice = price1;
-                break;
+            IO.println("Hi " + order.name + "! Here is our Menu:\n");
 
-            case 2:
-                selectedItem = item2;
-                selectedPrice = price2;
-                break;
+            order.displayMenu();
 
-            case 3:
-                selectedItem = item3;
-                selectedPrice = price3;
-                break;
+            while (true) {
+                IO.println("Loyalty Member? (yes/no)");
+                order.loyaltyChoice = sc.nextLine().trim().toLowerCase();
 
-            case 4:
-                selectedItem = item4;
-                selectedPrice = price4;
-                break;
-
-            case 5:
-                selectedItem = item5;
-                selectedPrice = price5;
-                break;
-
-            default:
-                IO.println("Invalid item number.");
-                return;
-        }
-
-        while (true) {
-            IO.println("How many? ");
-            if(input.hasNextInt()) {
-                quantity = input.nextInt();
-                input.nextLine();
-                if(quantity > 0){
-                    break;
-                } else {
-                    IO.println("Error: Quantity must be greater than 0.");
-                }
-            } else {
-                IO.println("Error: Please enter a numeric value greater than 0.");
-                input.nextLine();
-            }
-        }
-
-        while (true) {
-            IO.println("Loyalty Member? (yes/no)");
-            loyaltyChoice = input.nextLine().trim().toLowerCase();
-
-                if(loyaltyChoice.equals("yes") || loyaltyChoice.equals("no")) {
+                if (order.loyaltyChoice.equals("yes") || order.loyaltyChoice.equals("no")) {
                     break;
                 } else {
                     IO.println("Error: Please enter only yes or no.");
                 }
-        }
-        IO.println("");
-    }
-
-    double calculateSubTotal() {
-        subTotal = selectedPrice * quantity;
-        return subTotal;
-    }
-
-    double calculateDiscount() {
-            if (loyaltyChoice.equals("yes")) {
-                discount = subTotal * ((double) 15 /100);
-            } else if ((loyaltyChoice.equals("no")) && (subTotal > 150)) {
-                discount = subTotal * ((double) 10 /100);
-            } else {
-                discount = 0;
             }
-            return discount;
-    }
+            IO.println("");
 
-    double calculateVat() {
-            double amount = subTotal - discount;
-            vatTax = amount * ((double) 12 /100);
-            return vatTax;
-    }
+            while (true) {
+                IO.println("Enter item number (1-5): ");
+                if(sc.hasNextInt()) {
+                    order.item = sc.nextInt();
+                    sc.nextLine();
+                    if (order.item >= 1 && order.item <= 5) {
+                        break;
+                    } else {
+                        IO.println("Error: Enter an item number between 1 and 5.");
+                    }
+                } else {
+                    IO.println("Error: Please enter a numeric value between 1 and 5.");
+                    sc.nextLine();
+                }
+            }
 
-    double calculateTotalBill(){
-        totalAmount = subTotal - discount + vatTax;
-        return totalAmount;
-    }
+            order.fetchItemDetails();
 
-    void printReceipt() {
-        IO.println("==============================");
-        IO.println("\t\tLexicon Cafe");
-        IO.println("==============================");
-        IO.println("Customer:  \t" + name);
-        IO.println("Item    : \t" + selectedItem + " x " + quantity);
-        IO.println("Subtotal:  \t" + String.format("%.2f", calculateSubTotal()) + " SEK");
-        if(calculateDiscount() > 0) {
-            IO.println("Discount:  \t" + "-" +String.format("%.2f", calculateDiscount()) + " SEK");
-        }
-        IO.println("VAT     :  \t" + String.format("%.2f", calculateVat()) + " SEK");
-        IO.println("------------------------------");
-        IO.println("TOTAL   : \t" + String.format("%.2f", calculateTotalBill()) + " SEK");
-    }
+            while (true) {
+                System.out.println("How many?");
 
-    void displayMessage(){
-        IO.println("==============================");
-        IO.println("\tThank you, "+name+"!\n\tSee you next time.");
-        IO.println("==============================");
-    }
+                if (sc.hasNextInt()) {
+                    order.quantity = sc.nextInt();
+                    sc.nextLine();
 
-}
+                    if (order.quantity > 0) {
+                        break;
+                    }
 
-public class CafeOrderSystem {
-    void main() {
-        Scanner sc = new Scanner(System.in);
-        CustomerOrder order = new CustomerOrder(sc);
-        int count = 0;
-        boolean flag = true;
-        double totalRevenue = 0;
-        while (flag) {
-            order.getCustomerDetails();
-            order.greet();
-            order.displayMenu();
-            order.getOrder();
+                    System.out.println(
+                            "Error: Quantity must be greater than 0.");
+                } else {
+                    System.out.println(
+                            "Error: Please enter a valid whole number.");
+                    sc.nextLine();
+                }
+            }
+
             order.printReceipt();
             order.displayMessage();
+
             while (true){
                 IO.println("\nNext customer? Enter 'yes' to continue or 'done' to close.");
                 String text = sc.nextLine().trim().toLowerCase();
