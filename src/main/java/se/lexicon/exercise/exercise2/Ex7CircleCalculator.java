@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class CircleCalculator {
+public class Ex7CircleCalculator {
     void main(){
         Scanner sc = new Scanner(System.in);
         IO.println("Enter the radius of the circle: ");
