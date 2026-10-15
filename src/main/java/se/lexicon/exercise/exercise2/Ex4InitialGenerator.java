@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class InitialGenerator {
+public class Ex4InitialGenerator {
     void main() {
         Scanner sc = new Scanner(System.in);
 

@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class PalindromeChecker {
+public class Ex5PalindromeChecker {
     void main(){
         Scanner sc = new Scanner(System.in);
         IO.println("Enter a word: ");

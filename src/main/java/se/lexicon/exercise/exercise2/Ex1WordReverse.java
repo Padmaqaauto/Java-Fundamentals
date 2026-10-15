@@ -3,7 +3,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class WordReverse {
+public class Ex1WordReverse {
     void main(){
         Scanner input = new Scanner(System.in);
 

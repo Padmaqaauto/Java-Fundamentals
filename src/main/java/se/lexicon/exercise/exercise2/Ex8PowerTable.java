@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class PowerTable {
+public class Ex8PowerTable {
     void main(){
         Scanner sc = new Scanner(System.in);
         IO.println("Enter base number:");

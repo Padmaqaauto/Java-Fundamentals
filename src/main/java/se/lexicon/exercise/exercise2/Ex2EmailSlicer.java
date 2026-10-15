@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class EmailSlicer {
+public class Ex2EmailSlicer {
     void main(){
         Scanner input = new Scanner(System.in);
 

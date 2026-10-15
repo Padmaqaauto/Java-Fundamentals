@@ -2,7 +2,7 @@ package se.lexicon.exercise.exercise2;
 
 import java.util.Scanner;
 
-public class WordCounter {
+public class Ex6WordCounter {
     void main(){
         Scanner input = new Scanner(System.in);
 
