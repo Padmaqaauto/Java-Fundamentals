@@ -1,8 +1,6 @@
-
 package se.lexicon.workshops.workshop2;
 
 import java.util.Scanner;
-import java.util.Locale;
 
 class ConversionMenu {
 
@@ -36,15 +34,20 @@ class ConversionMenu {
         long roundedScore = Math.round(score);
 
         if (roundedScore >= 90) {
-            return "Score: " + roundedScore + " | Grade: A | Label: Excellent";
+            return "Score: " + roundedScore
+                    + " | Grade: A | Label: Excellent";
         } else if (roundedScore >= 80) {
-            return "Score: " + roundedScore + " | Grade: B | Label: Good";
+            return "Score: " + roundedScore
+                    + " | Grade: B | Label: Good";
         } else if (roundedScore >= 70) {
-            return "Score: " + roundedScore + " | Grade: C | Label: Pass";
+            return "Score: " + roundedScore
+                    + " | Grade: C | Label: Pass";
         } else if (roundedScore >= 60) {
-            return "Score: " + roundedScore + " | Grade: D | Label: Below average";
+            return "Score: " + roundedScore
+                    + " | Grade: D | Label: Below average";
         } else {
-            return "Score: " + roundedScore + " | Grade: F | Label: Fail";
+            return "Score: " + roundedScore
+                    + " | Grade: F | Label: Fail";
         }
     }
 }
@@ -57,6 +60,9 @@ public class ConverterApp {
 
         boolean flag = true;
 
+        StringBuilder history = new StringBuilder();
+        int conversionCount = 0;
+
         while (flag) {
             IO.println("==================================");
             IO.println("LEXICON CONVERTER APP");
@@ -67,7 +73,7 @@ public class ConverterApp {
             IO.println("4. Exit");
             IO.println("==================================");
 
-            int choice = 0;
+            int choice;
 
             while (true) {
                 IO.println("Choose an option: ");
@@ -100,10 +106,12 @@ public class ConverterApp {
                         if (input.hasNextInt()) {
                             converterChoice = input.nextInt();
 
-                            if (converterChoice == 1 || converterChoice == 2) {
+                            if (converterChoice == 1
+                                    || converterChoice == 2) {
                                 break;
                             } else {
-                                IO.println("Invalid currency choice! Enter 1 or 2.");
+                                IO.println(
+                                        "Invalid currency choice! Enter 1 or 2.");
                             }
                         } else {
                             IO.println("Please enter numeric values only");
@@ -111,18 +119,19 @@ public class ConverterApp {
                         }
                     }
 
-                    IO.println("Enter amount in SEK: ");
-
-                    double amount = 0;
+                    double amount;
 
                     while (true) {
+                        IO.println("Enter amount in SEK: ");
+
                         if (input.hasNextDouble()) {
                             amount = input.nextDouble();
 
-                            if (Double.isFinite(amount) && amount > 0) {
+                            if (Double.isFinite(amount) && amount >= 0) {
                                 break;
                             } else {
-                                IO.println("Please enter a non-negative amount.");
+                                IO.println(
+                                        "Please enter a non-negative amount.");
                             }
                         } else {
                             IO.println("Please enter numeric values only");
@@ -130,15 +139,28 @@ public class ConverterApp {
                         }
                     }
 
-                    double result = convertor.currencyConvertor(converterChoice, amount);
+                    double result = convertor.currencyConvertor(
+                            converterChoice, amount);
 
-                    String currency = (converterChoice == 1) ? "USD" : "EUR";
+                    String currency =
+                            (converterChoice == 1) ? "USD" : "EUR";
 
                     IO.println("Result: "
-                            + String.format(Locale.US, "%.2f", amount)
+                            + String.format("%.2f", amount)
                             + " SEK = "
-                            + String.format(Locale.US, "%.2f", result)
+                            + String.format("%.2f", result)
                             + " " + currency);
+
+                    history.append("\n")
+                            .append(conversionCount + 1)
+                            .append(". ")
+                            .append(String.format("%.2f", amount))
+                            .append(" SEK = ")
+                            .append(String.format("%.2f", result))
+                            .append(" ")
+                            .append(currency);
+
+                    conversionCount++;
                     break;
 
                 case 2:
@@ -152,10 +174,12 @@ public class ConverterApp {
                         if (input.hasNextInt()) {
                             converterChoice = input.nextInt();
 
-                            if (converterChoice == 1 || converterChoice == 2) {
+                            if (converterChoice == 1
+                                    || converterChoice == 2) {
                                 break;
                             } else {
-                                IO.println("Invalid fuel conversion choice! Enter 1 or 2.");
+                                IO.println(
+                                        "Invalid fuel conversion choice! Enter 1 or 2.");
                             }
                         } else {
                             IO.println("Please enter numeric values only");
@@ -164,11 +188,12 @@ public class ConverterApp {
                     }
 
                     if (converterChoice == 1) {
-                        IO.println("Enter fuel consumption in L/100 km: ");
-
-                        double litresPer100km = 0;
+                        double litresPer100km;
 
                         while (true) {
+                            IO.println(
+                                    "Enter fuel consumption in L/100 km: ");
+
                             if (input.hasNextDouble()) {
                                 litresPer100km = input.nextDouble();
 
@@ -176,58 +201,86 @@ public class ConverterApp {
                                         && litresPer100km > 0) {
                                     break;
                                 } else {
-                                    IO.println("Value must be greater than zero.");
+                                    IO.println(
+                                            "Value must be greater than zero.");
                                 }
                             } else {
-                                IO.println("Please enter numeric values only");
+                                IO.println(
+                                        "Please enter numeric values only");
                                 input.next();
                             }
                         }
 
-                        double kmPerLitre = convertor.fuelConsumptionConvertor(
-                                converterChoice, litresPer100km);
+                        double kmPerLitre =
+                                convertor.fuelConsumptionConvertor(
+                                        converterChoice, litresPer100km);
 
                         IO.println("Result: "
-                                + String.format(Locale.US, "%.2f", litresPer100km)
+                                + String.format("%.2f", litresPer100km)
                                 + " L/100 km = "
-                                + String.format(Locale.US, "%.2f", kmPerLitre)
+                                + String.format("%.2f", kmPerLitre)
                                 + " km/L");
 
-                    } else {
-                        IO.println("Enter fuel efficiency in km/L: ");
+                        history.append("\n")
+                                .append(conversionCount + 1)
+                                .append(". ")
+                                .append(String.format("%.2f", litresPer100km))
+                                .append(" L/100 km = ")
+                                .append(String.format("%.2f", kmPerLitre))
+                                .append(" km/L");
 
-                        double efficiency = 0;
+                        conversionCount++;
+
+                    } else {
+                        double efficiency;
 
                         while (true) {
+                            IO.println("Enter fuel efficiency in km/L: ");
+
                             if (input.hasNextDouble()) {
                                 efficiency = input.nextDouble();
 
-                                if (Double.isFinite(efficiency) && efficiency > 0) {
+                                if (Double.isFinite(efficiency)
+                                        && efficiency > 0) {
                                     break;
                                 } else {
-                                    IO.println("Value must be greater than zero.");
+                                    IO.println(
+                                            "Value must be greater than zero.");
                                 }
                             } else {
-                                IO.println("Please enter numeric values only");
+                                IO.println(
+                                        "Please enter numeric values only");
                                 input.next();
                             }
                         }
 
-                        double consumption = convertor.fuelConsumptionConvertor(
-                                converterChoice, efficiency);
+                        double consumption =
+                                convertor.fuelConsumptionConvertor(
+                                        converterChoice, efficiency);
 
                         IO.println("Result: "
-                                + String.format(Locale.US, "%.2f", efficiency)
+                                + String.format("%.2f", efficiency)
                                 + " km/L = "
-                                + String.format(Locale.US, "%.2f", consumption)
+                                + String.format("%.2f", consumption)
                                 + " L/100 km");
+
+                        history.append("\n")
+                                .append(conversionCount + 1)
+                                .append(". ")
+                                .append(String.format("%.2f", efficiency))
+                                .append(" km/L = ")
+                                .append(String.format("%.2f", consumption))
+                                .append(" L/100 km");
+
+                        conversionCount++;
                     }
+
                     break;
 
                 case 3:
                     IO.println("\n--- Grade Converter ---");
 
-                    double score = 0;
+                    double score;
 
                     while (true) {
                         IO.println("Enter score (0-100):");
@@ -239,24 +292,45 @@ public class ConverterApp {
                                     && score >= 0 && score <= 100) {
                                 break;
                             } else {
-                                IO.println("Please enter a score between 0 and 100.");
+                                IO.println(
+                                        "Please enter a score between 0 and 100.");
                             }
                         } else {
-                            IO.println("Please enter numeric values only");
+                            IO.println(
+                                    "Please enter numeric values only");
                             input.next();
                         }
                     }
 
-                    IO.println(convertor.gradeConvertor(score));
+                    String gradeResult = convertor.gradeConvertor(score);
+
+                    IO.println(gradeResult);
+
+                    history.append("\n")
+                            .append(conversionCount + 1)
+                            .append(". Score: ")
+                            .append(String.format("%.2f", score))
+                            .append(" = ")
+                            .append(gradeResult);
+
+                    conversionCount++;
                     break;
 
                 case 4:
+                    IO.println("\n=== Conversion History ===");
+
+                    if (conversionCount > 0) {
+                        IO.println(history.toString());
+                    } else {
+                        IO.println("No conversions to display!");
+                    }
+
+                    IO.println("==========================");
+                    IO.println("Total conversions: " + conversionCount);
                     IO.println("Goodbye!");
+
                     flag = false;
                     break;
-
-                default:
-                    IO.println("Invalid menu choice!");
             }
 
             if (flag) {
@@ -264,16 +338,34 @@ public class ConverterApp {
 
                 while (true) {
                     IO.println("Continue? (yes/no): ");
-                    String text = input.nextLine().trim().toLowerCase();
+                    String text = input.nextLine()
+                            .trim()
+                            .toLowerCase();
 
                     if (text.equals("yes")) {
                         break;
+
                     } else if (text.equals("no")) {
                         flag = false;
+
+                        IO.println("\n=== Conversion History ===");
+
+                        if (conversionCount > 0) {
+                            IO.println(history.toString());
+                        } else {
+                            IO.println("No conversions to display!");
+                        }
+
+                        IO.println("==========================");
+                        IO.println(
+                                "Total conversions: " + conversionCount);
                         IO.println("Goodbye!");
+
                         break;
+
                     } else {
-                        IO.println("Invalid input. Please enter yes or no.");
+                        IO.println(
+                                "Invalid input. Please enter yes or no.");
                     }
                 }
             }
