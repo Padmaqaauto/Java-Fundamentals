@@ -1,5 +1,7 @@
 package se.lexicon.workshops.workshop2;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 class ConversionMenu {
@@ -57,6 +59,9 @@ public class ConverterApp {
     void main() {
         Scanner input = new Scanner(System.in);
         ConversionMenu convertor = new ConversionMenu();
+
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
         boolean flag = true;
 
@@ -151,6 +156,9 @@ public class ConverterApp {
                             + String.format("%.2f", result)
                             + " " + currency);
 
+                    IO.println("Converted at: "
+                            + LocalDateTime.now().format(formatter));
+
                     history.append("\n")
                             .append(conversionCount + 1)
                             .append(". ")
@@ -197,12 +205,11 @@ public class ConverterApp {
                             if (input.hasNextDouble()) {
                                 litresPer100km = input.nextDouble();
 
-                                if (Double.isFinite(litresPer100km)
-                                        && litresPer100km > 0) {
+                                if (litresPer100km > 0 && litresPer100km <= 100) {
                                     break;
                                 } else {
                                     IO.println(
-                                            "Value must be greater than zero.");
+                                            "Values must be between 1 and 100.");
                                 }
                             } else {
                                 IO.println(
@@ -220,6 +227,9 @@ public class ConverterApp {
                                 + " L/100 km = "
                                 + String.format("%.2f", kmPerLitre)
                                 + " km/L");
+
+                        IO.println("Converted at: "
+                                + LocalDateTime.now().format(formatter));
 
                         history.append("\n")
                                 .append(conversionCount + 1)
@@ -264,6 +274,10 @@ public class ConverterApp {
                                 + String.format("%.2f", consumption)
                                 + " L/100 km");
 
+
+                        IO.println("Converted at: "
+                                + LocalDateTime.now().format(formatter));
+
                         history.append("\n")
                                 .append(conversionCount + 1)
                                 .append(". ")
@@ -305,6 +319,10 @@ public class ConverterApp {
                     String gradeResult = convertor.gradeConvertor(score);
 
                     IO.println(gradeResult);
+
+
+                    IO.println("Converted at: "
+                            + LocalDateTime.now().format(formatter));
 
                     history.append("\n")
                             .append(conversionCount + 1)
