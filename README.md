@@ -20,12 +20,12 @@ The repository is organized **date-wise and activity-wise**, with separate branc
 
 | Date            | Day       | Activity           | Branch                                                                           |
 | --------------- | --------- | ------------------ | -------------------------------------------------------------------------------- |
-| **15-Oct-2026** | Thursday  | 🛠️ Workshop       | [`15-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/Workshop-15-10) |
-| **14-Oct-2026** | Wednesday | 📝 Exercises       | [`14-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/Exercise-14-10) |
-| **13-Oct-2026** | Tuesday   | 🧪 Practice / Demo | [`13-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/Practice-13-10) 
-| **08-Oct-2026** | Thursday  | 🛠️ Workshop       | [`08-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/workshop-08-10) |
-| **07-Oct-2026** | Wednesday | 📝 Exercises       | [`07-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/Exercise_07_10) |
-| **06-Oct-2026** | Tuesday   | 🧪 Practice / Demo | [`06-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals) |
+| **15-Oct-2026** | Thursday  | 🛠️ Workshop       | [`15-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/workshops/workshop2) |
+| **14-Oct-2026** | Wednesday | 📝 Exercises       | [`14-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise/exercise2) |
+| **13-Oct-2026** | Tuesday   | 🧪 Practice / Demo | [`13-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice/session2) 
+| **08-Oct-2026** | Thursday  | 🛠️ Workshop       | [`08-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/workshops/workshop1) |
+| **07-Oct-2026** | Wednesday | 📝 Exercises       | [`07-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise/excersie1) |
+| **06-Oct-2026** | Tuesday   | 🧪 Practice / Demo | [`06-10-2026`]https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice/session1) |
 
 ---
 
