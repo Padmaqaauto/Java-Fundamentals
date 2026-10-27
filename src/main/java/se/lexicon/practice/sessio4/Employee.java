@@ -11,7 +11,7 @@ public class Employee {
     private double     salary;
 
     public Employee(String name, String role, Department department, double salary) {
-        //setName(name);
+        setName(name);
         setRole(role);
         setDepartment(department);
         setSalary(salary);
