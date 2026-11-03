@@ -1,4 +1,4 @@
-package se.lexicon.practice.sessio4;
+package se.lexicon.practice.session4;
 
 public class Employee {
 
@@ -9,13 +9,23 @@ public class Employee {
     private String     role;
     private Department department;
     private double     salary;
+    private WorkContract contract;
+
+    public Employee(String name, String role, Department department, double salary,
+                    String startDate, String contractType) {
+        setName(name);
+        setRole(role);
+        setDepartment(department);
+        setSalary(salary);
+        this.contract = new WorkContract(startDate, contractType );
+        totalEmployee++;  // increments every time a new Employee is created
+    }
 
     public Employee(String name, String role, Department department, double salary) {
         setName(name);
         setRole(role);
         setDepartment(department);
         setSalary(salary);
-        totalEmployee++;  // increments every time a new Employee is created
     }
 
     //default Constructor
@@ -59,14 +69,20 @@ public class Employee {
     }
 
     public void setName(String name) {
+        if(name == null || name.isBlank())
+            throw new IllegalArgumentException("Name cannot be null or blank");
         this.name = name;
     }
 
     public void setRole(String role) {
+        if(role == null || role.isBlank())
+            throw new IllegalArgumentException("Role cannot be null or blank");
         this.role = role;
     }
 
     public void setDepartment(Department department) {
+        if(department == null)
+            throw new IllegalArgumentException("Department cannot be null");
         this.department = department;
     }
 
@@ -95,11 +111,21 @@ public class Employee {
         IO.println(name + "'s new salary: " + salary);
     }
 
-    void displayInfo(){
-        IO.println(name + " | " + role + " | " + department + " | " + salary);
-    }
-
     static void printEmployees() {
         IO.println("Total Employees hired: " + totalEmployee);
+    }
+
+    // ASSOCIATION method — Laptop is passed as a parameter, not stored as a field.
+    public void use(Laptop laptop) {
+        if(laptop == null)
+            throw new IllegalArgumentException("Laptop cannot be null");
+        IO.println(getName() + " is using " + laptop.getDetails());
+    }
+
+    // Updated displayInfo to include contract details
+    public void displayInfo() {
+        String info = getName() + " | " + getRole() + " | " + getDepartment() + " | " + getSalary();
+        if (contract != null) info += " | " + contract.getDetails();
+        IO.println(info);
     }
 }
