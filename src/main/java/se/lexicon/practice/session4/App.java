@@ -1,7 +1,8 @@
-package se.lexicon.practice.sessio4;
+package se.lexicon.practice.session4;
 
 public class App {
     void main(){
+        Laptop laptop = new Laptop("Dell","XPS 15");
         Employee anna = new Employee("Anna","Tester", Department.IT, 50000);
 //        anna.name = "Anna";
 //        anna.role = "Tester";
@@ -39,10 +40,23 @@ public class App {
         emp.setSalary(80000);
         //emp.setSalary(-99999);
         emp.displayInfo();
+        //emp.setDepartment(null);
         // "" | null | -99999.0   ← broken object, Java said nothing
+        emp.use(laptop);
+
+        //Aggregation
+        Company techCorp = new Company("TechCorp");
+        techCorp.hire(anna);
+        techCorp.hire(lena);
+        techCorp.hire(emp);
+        techCorp.listEmployees();
 
 
+        Employee johan = new Employee("Johan", "Developer", Department.IT,        80000, "2023-01-15", "Full-Time");
+        Employee sofia = new Employee("Sofia", "Designer",  Department.MARKETING, 60000, "2023-03-01", "Part-Time");
 
+        johan.displayInfo();
+        sofia.displayInfo();
 
     }
 }
