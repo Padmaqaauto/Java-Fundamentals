@@ -8,7 +8,7 @@ public class WorkContract {
     private final String contractType;
 
     // Package-private — only Employee (same package) can call this
-    WorkContract(String startDate, String contractType) {
+    public WorkContract(String startDate, String contractType) {
         this.startDate = startDate;
         this.contractType = contractType;
     }
