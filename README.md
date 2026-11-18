@@ -20,6 +20,8 @@ The repository is organized **date-wise and activity-wise**, with separate branc
 
 | Date            | Day       | Activity           | Branch                                                                           |
 | --------------- | --------- | ------------------ | -------------------------------------------------------------------------------- |
+| **11-Nov-2026** | Wednesday | 📝 Exercises       | [`11-11-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise/exercise6) |
+| **10-Nov-2026** | Tuesday   | 🧪 Practice / Demo | [`10-11-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice/session6) 
 | **04-Nov-2026** | Wednesday | 📝 Exercises       | [`04-11-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/exercise/exercise5) |
 | **03-Nov-2026** | Tuesday   | 🧪 Practice / Demo | [`03-11-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice/session5) 
 | **27-Oct-2026** | Tuesday   | 🧪 Practice / Demo | [`27-10-2026`](https://github.com/Padmaqaauto/Java-Fundamentals/tree/main/src/main/java/se/lexicon/practice/session4) 
